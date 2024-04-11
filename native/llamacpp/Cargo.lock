@@ -161,6 +161,7 @@ dependencies = [
 name = "llamacpp"
 version = "0.1.0"
 dependencies = [
+ "lazy_static",
  "llama_cpp_rs",
  "rustler",
 ]
