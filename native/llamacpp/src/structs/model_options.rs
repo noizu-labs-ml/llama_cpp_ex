@@ -1,8 +1,13 @@
+// This module contains the ExModelOptions struct which is a wrapper around the ModelOptions struct from the llama_cpp_rs crate.
+// The ExModelOptions struct includes various fields that are used to configure the model.
+// The ExModelOptions struct also implements the From trait to allow it to be converted into a ModelOptions object.
+
 use llama_cpp_rs::{
     options::{ModelOptions},
 };
 use rustler::{NifStruct};
 
+// Wrapper around the ModelOptions struct from the llama_cpp_rs crate.
 #[derive(NifStruct)]
 #[module = "LLamaCpp.ModelOptions"]
 pub struct ExModelOptions {
@@ -21,6 +26,7 @@ pub struct ExModelOptions {
     pub numa: bool,
 }
 
+// Implementation of the From trait to convert ExModelOptions into ModelOptions.
 impl From<ExModelOptions> for ModelOptions {
     fn from(a: ExModelOptions) -> Self {
         ModelOptions {

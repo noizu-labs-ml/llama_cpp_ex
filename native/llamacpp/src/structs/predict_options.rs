@@ -1,8 +1,13 @@
+// This module contains the ExPredictOptions struct which is a wrapper around the PredictOptions struct from the llama_cpp_rs crate.
+// The ExPredictOptions struct includes various fields that are used to configure the prediction process.
+// The ExPredictOptions struct also implements the From trait to allow it to be converted into a PredictOptions object.
+
 use llama_cpp_rs::{
     options::{PredictOptions},
 };
 use rustler::{NifStruct};
 
+// Wrapper around the PredictOptions struct from the llama_cpp_rs crate.
 #[derive(NifStruct)]
 #[module = "LLamaCpp.PredictOptions"]
 pub struct ExPredictOptions {
@@ -37,6 +42,8 @@ pub struct ExPredictOptions {
     pub main_gpu: String,
     pub tensor_split: String,
 }
+
+// Implementation of the From trait to convert ExPredictOptions into PredictOptions.
 impl From<ExPredictOptions> for PredictOptions {
     fn from(a: ExPredictOptions) -> Self {
         PredictOptions {
